@@ -31,7 +31,5 @@ def passcard_info_view(request, passcode):
 
 
 def is_visit_long(visit, delta, compare_minutes=timedelta(minutes=60)):
-    if delta > compare_minutes:
-        return True
-    else:
-        return False
+    result = delta > compare_minutes
+    return result

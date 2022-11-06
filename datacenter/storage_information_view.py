@@ -25,7 +25,6 @@ def storage_information_view(request):
 def get_duration(visit):
     start_visit = visit.entered_at
     end_visit = visit.leaved_at
-    # local_time = localtime()
     if end_visit:
         delta = end_visit - start_visit
     else:
