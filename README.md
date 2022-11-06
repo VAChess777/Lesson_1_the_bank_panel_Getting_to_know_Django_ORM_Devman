@@ -1,8 +1,8 @@
 # The project "Security Control Panel" 
 
-1) The program displays information on the "security panel" about active employee passes.
-2) The program displays information about the employee's time in the place of interest to us.
-3) The program displays information about employees who are currently in the place of interest to us.
+- The program displays information on the "security panel" about active employee passes.
+- The program displays information about the employee's time in the place of interest to us.
+- The program displays information about employees who are currently in the place of interest to us.
 
 ### Software environment and installation:
 
