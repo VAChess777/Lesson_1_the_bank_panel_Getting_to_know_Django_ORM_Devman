@@ -26,6 +26,7 @@ def get_duration(visit):
     delta = localtime(visit.leaved_at) - localtime(visit.entered_at)
     return delta
 
+
 def format_duartion(delta):
     seconds = delta.total_seconds()
     hours = abs(int(seconds // 3600))
