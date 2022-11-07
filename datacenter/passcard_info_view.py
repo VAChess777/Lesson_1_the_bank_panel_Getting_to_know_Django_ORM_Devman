@@ -10,16 +10,16 @@ from .storage_information_view import get_duration
 
 
 def passcard_info_view(request, passcode):
-    passcard = Passcard.objects.get(passcode=passcode)
+    passcard = get_object_or_404(Passcard, passcode=passcode)
     passcard_visits = Visit.objects.filter(passcard=passcard)
-    get_object_or_404(Passcard, passcode=passcode)
     this_passcard_visits = []
     for visit in passcard_visits:
         delta = get_duration(visit)
-        flag = is_visit_long(visit, delta, compare_minutes=timedelta(minutes=60))
+        different = format_duartion(delta)
+        flag = is_visit_long(delta)
         visit_serialize = {
             'entered_at': visit.entered_at,
-            'duration': str(format_duartion(delta)).split('.')[0],
+            'duration': different,
             'is_strange': flag
         }
         this_passcard_visits.append(visit_serialize)
@@ -30,6 +30,6 @@ def passcard_info_view(request, passcode):
     return render(request, 'passcard_info.html', context)
 
 
-def is_visit_long(visit, delta, compare_minutes=timedelta(minutes=60)):
-    result = delta > compare_minutes
+def is_visit_long(delta):
+    result = delta > timedelta(minutes=60)
     return result
